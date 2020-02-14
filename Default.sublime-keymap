@@ -1,0 +1,21 @@
+[
+    { "keys": ["left"], "command": "tunneling_change_selection_endpoint", "args": { "begin": true }, "context": [{ "key": "g_t_exists_caret_at_end_of_selection", "operand": true }]},
+    { "keys": ["right"], "command": "tunneling_change_selection_endpoint", "args": { "begin": false }, "context": [{ "key": "g_t_exists_caret_at_beginning_of_selection", "operand": true }]},
+    { "keys": ["alt+left"], "command": "tunneling_change_selection_endpoint", "args": { "begin": true }, "context": [{ "key": "g_t_exists_caret_at_end_of_selection", "operand": true }]},
+    { "keys": ["alt+right"], "command": "tunneling_change_selection_endpoint", "args": { "begin": false }, "context": [{ "key": "g_t_exists_caret_at_beginning_of_selection", "operand": true }]},
+
+    { "keys": ["shift+backspace"], "command": "tunneling_delete_left_from_selection_end", "context": [{ "key": "all_selections_nonempty" }]},
+    { "keys": ["shift+delete"], "command": "tunneling_delete_right_from_selection_start", "context": [{ "key": "all_selections_nonempty" }]},
+    { "keys": ["shift+alt+backspace"], "command": "tunneling_delete_subword_left_from_selection_end", "context": [{ "key": "all_selections_nonempty" }]},
+    { "keys": ["shift+alt+delete"], "command": "tunneling_delete_subword_right_from_selection_start", "context": [{ "key": "all_selections_nonempty" }]},
+
+    // dropping selections without moving for alt+left, alt+right
+    { "keys": ["alt+left"], "command": "tunneling_clear_selections", "args": { "where": "begin" }, "context": [
+        { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": false},
+        { "key": "g_t_exists_caret_at_end_of_selection", "operator": "equal", "operand": false }
+    ]},
+    { "keys": ["alt+right"], "command": "tunneling_clear_selections", "args": { "where": "end" }, "context": [
+        { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": false},
+        { "key": "g_t_exists_caret_at_beginning_of_selection", "operator": "equal", "operand": false }
+    ]},
+]
